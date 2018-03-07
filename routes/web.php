@@ -17,3 +17,5 @@ Route::get('/', function (Request $request) {
 });
 // Article Publicitaire
 Route::resource('articlepublicitaire', 'ArticlePublicitaireCtrl');
+
+Route::resource('sinistre', 'SinistreController');

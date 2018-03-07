@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sinistre;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Models\ArticlePublicitaire;
-use App\Lib\Message;
-
-class ArticlePublicitaireCtrl extends Controller
+class SinistreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +14,8 @@ class ArticlePublicitaireCtrl extends Controller
      */
     public function index()
     {
-        $articles = ArticlePublicitaire::all();
-        return view('articlepublicitaire/index')->with('articlepublicitaire', $articles);
+        $sinistres = Sinistre::all();
+        return view('sinistre/index')->with('sinistre', $sinistres);
     }
 
     /**
@@ -29,37 +25,37 @@ class ArticlePublicitaireCtrl extends Controller
      */
     public function create()
     {
-        return view('articlepublicitaire/create');
+        return view('sinistre/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $inputs = $request->only('numero', 'descriptif', 'prixUnitaire', 'disponibilite');
+        $inputs = $request->only('reference', 'date', 'montant');
 
-        $validate = ArticlePublicitaire::getValidation($inputs);
+        $validate = Sinistre::getValidation($inputs);
 
         if ($validate->fails()) {
             return redirect()->back()->withInput()->withErrors($validate);
         }
 
         if ($validate->passes()) {
-            return redirect('articlepublicitaire/');
+            return redirect('sinistre/');
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  \App\Models\Sinistre  $sinistre
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Sinistre $sinistre)
     {
         //
     }
@@ -67,10 +63,10 @@ class ArticlePublicitaireCtrl extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  \App\Models\Sinistre  $sinistre
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Sinistre $sinistre)
     {
         //
     }
@@ -78,11 +74,11 @@ class ArticlePublicitaireCtrl extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Sinistre  $sinistre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Sinistre $sinistre)
     {
         //
     }
@@ -90,10 +86,10 @@ class ArticlePublicitaireCtrl extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  \App\Models\Sinistre  $sinistre
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sinistre $sinistre)
     {
         //
     }
