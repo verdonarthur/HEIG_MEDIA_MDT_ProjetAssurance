@@ -49,7 +49,14 @@ class ArticlePublicitaireCtrl extends Controller
         }
 
         if ($validate->passes()) {
-            return redirect('articlepublicitaire/');
+            try {
+                ArticlePublicitaire::saveOne($inputs);
+                Message::success('articlepublicitaire.created');
+                return redirect('articlepublicitaire/');
+            } catch (\Exception $e) {
+                Message::error('bd.error');
+                return redirect()->back()->withInput()->withErrors();
+            }
         }
     }
 

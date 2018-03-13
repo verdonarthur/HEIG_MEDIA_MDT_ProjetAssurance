@@ -25,10 +25,22 @@ class ArticlePublicitaire extends Model
             $articlePublicitaire = self::find($inputs['numero']);
 
             if ($articlePublicitaire !== null) {
-                $validator->errors()->add('exists', Message::get('article.exists'));
+                $validator->errors()->add('exists', Message::get('articlepublicitaire.exists'));
             }
         });
 
         return $validator;
+    }
+
+    public static function saveOne(array $data)
+    {
+        $newArticle = new ArticlePublicitaire();
+
+        $newArticle->numero = $data['numero'];
+        $newArticle->descriptif = $data['descriptif'];
+        $newArticle->prixUnitaire = $data['prixUnitaire'];
+        $newArticle->disponibilite = $data['disponibilite'];
+
+        $newArticle->save();
     }
 }

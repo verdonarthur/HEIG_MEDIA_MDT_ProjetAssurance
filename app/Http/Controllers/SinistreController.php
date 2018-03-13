@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sinistre;
 use Illuminate\Http\Request;
+use App\Lib\Message;
 
 class SinistreController extends Controller
 {
@@ -44,8 +45,13 @@ class SinistreController extends Controller
             return redirect()->back()->withInput()->withErrors($validate);
         }
 
-        if ($validate->passes()) {
-            return redirect('sinistre/');
+        try {
+            Sinistre::saveOne($inputs);
+            Message::success('sinistre.created');
+            return redirect('sinistre');
+        } catch (\Exception $e) {
+            Message::error('bd.error');
+            return redirect()->back()->withInput();
         }
     }
 

@@ -11,5 +11,13 @@ return [
         'error' => 'Erreur technique : :error',
     ],
     'not_implemented' => "Cette fonctionnalité n'est pas encore implémentée.",
-    'valide' => "C'est validey !"
+    'valide' => "C'est validey !",
+    'sinistre'=>[
+        'created'=>'Sinistre créé',
+        'exists'=>'le sinistre existe'
+    ],
+    'articlepublicitaire'=>[
+        'created'=>'article pub créé',
+        'exists'=>'l\' article pub existe'
+    ]
 ];
