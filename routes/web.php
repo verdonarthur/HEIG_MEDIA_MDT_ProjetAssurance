@@ -18,4 +18,11 @@ Route::get('/', function (Request $request) {
 // Article Publicitaire
 Route::resource('articlepublicitaire', 'ArticlePublicitaireCtrl');
 
+// Sinistre
 Route::resource('sinistre', 'SinistreController');
+
+// Ligne de Commande
+Route::resource('lignecommande', 'LigneCommandeCtrl');
+
+// Contrat
+Route::resource('contrat','ContratController');

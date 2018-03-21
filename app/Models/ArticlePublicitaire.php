@@ -43,4 +43,13 @@ class ArticlePublicitaire extends Model
 
         $newArticle->save();
     }
+
+    /**
+     * Indique si l'article actuel est disponible ou non.
+     * @return bool
+     */
+    public function isAvailable()
+    {
+        return $this->disponibilite == 'Oui';
+    }
 }
