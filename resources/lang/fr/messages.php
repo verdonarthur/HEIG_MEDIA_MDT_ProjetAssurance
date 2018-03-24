@@ -16,7 +16,11 @@ return [
         'exists' => "Ce numéro d'article est déjà utilisé pour un article existant.",
         'saved' => "Le nouvel article publicitaire a correctement été sauvegardé.",
         'missing' => "Il n'existe aucun article avec ce numéro.",
-        'unavailable' => "Cet article n'est pas disponible."
+        'unavailable' => "Cet article n'est pas disponible.",
+        'nb' => [
+            'missing' => "Il n'existe aucune article avec le numéro :nb.",
+            'unavailable' => "L'article n°:nb n'est pas disponible."
+        ]
     ],
     'sinistre' => [
         'exists' => "Un sinistre existe déjà avec cette référence pour cette date là.",
@@ -26,13 +30,13 @@ return [
         'exists' => "Une ligne de commande pour cet article existe déjà pour cette commande."
     ],
     'commande' => [
-        'missing' => "Il n'existe aucune commande avec ce numéro."
+        'missing' => "Il n'existe aucune commande avec ce numéro.",
+        'saved' => "La nouvelle commande a correctement été créée."
     ],
-    'client'=>[
-        'missing'=>"Il n'existe aucun client avec ce numéro.",
+    'client' => [
+        'missing' => "Il n'existe aucun client avec ce numéro."
     ],
-    'contrat'=>[
-        'exists'=>'Un contrat avec ces références existe déjà',
-        'saved'=>'Le contrat a bien été sauvé'
+    'contrat' => [
+        'saved' => "Le nouveau contrat a correctement été sauvegardé."
     ]
 ];

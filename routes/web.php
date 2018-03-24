@@ -1,13 +1,15 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Application Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
+| This route group applies the "web" middleware group to every route
+| it contains. The "web" middleware group is defined in your HTTP
+| kernel and includes session state, CSRF protection, and more.
 |
 */
 
@@ -17,12 +19,13 @@ Route::get('/', function (Request $request) {
 });
 // Article Publicitaire
 Route::resource('articlepublicitaire', 'ArticlePublicitaireCtrl');
-
 // Sinistre
 Route::resource('sinistre', 'SinistreController');
-
 // Ligne de Commande
 Route::resource('lignecommande', 'LigneCommandeCtrl');
-
 // Contrat
-Route::resource('contrat','ContratController');
+Route::resource('contrat', 'ContratController');
+// Commande
+Route::resource('commande', 'CommandeCtrl');
+// Client
+Route::resource('client', 'clientController');

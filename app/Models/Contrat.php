@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Validator;
 
-class Contrat extends Model {
+class Contrat extends Model
+{
     protected $table = 'contrat';
     public $timestamps = false;
 
@@ -16,7 +17,8 @@ class Contrat extends Model {
         'clientNo'=>'required|integer|min:0',
     ];
 
-    public static function getValidation($inputs) {
+    public static function getValidation($inputs)
+    {
         $validator = Validator::make($inputs, self::$rules);
 
         $validator->after(function ($validator) use ($inputs) {
@@ -31,22 +33,24 @@ class Contrat extends Model {
 
             if ($contrat !== null) {
                 $validator->errors()->add('exists', Message::get('contrat.exists'));
-
             }
         });
 
         return $validator;
     }
 
-    public static function find($clientNo, $dossierNo) {
+    public static function find($clientNo, $dossierNo)
+    {
         return self::where('clientNo', $clientNo)->where('dossierNo', $dossierNo)->first();
     }
 
-    public static function getLastDossierNo($clientNo){
+    public static function getLastDossierNo($clientNo)
+    {
         return self::where('clientNo', $clientNo)->max('dossierNo') + 1;
     }
 
-    public static function saveOne(array $values) {
+    public static function saveOne(array $values)
+    {
         $newContrat = new self();
 
         $newContrat->dossierNo = self::getLastDossierNo($values['clientNo']);
@@ -56,5 +60,18 @@ class Contrat extends Model {
         $newContrat->dateEcheance = $values['dateEcheance'];
 
         $newContrat->save();
+    }
+    
+    public static function mergeContrat(array $contrats)
+    {
+        $mergedContrat = [];
+
+        foreach ($contrats as $contrat) {
+            $mergedContrat[] = $contrat;
+        }
+
+        // Une fois toutes les lignes scannées, on retourne les lignes fusionnées
+        // qui respectent le format reçu.
+        return $mergedContrat;
     }
 }
