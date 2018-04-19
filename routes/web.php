@@ -29,3 +29,7 @@ Route::resource('contrat', 'ContratController');
 Route::resource('commande', 'CommandeCtrl');
 // Client
 Route::resource('client', 'clientController');
+// Couverture
+Route::resource('couverture', 'CouvertureCtrl');
+// Implication
+Route::resource('implication', 'ImplicationController');

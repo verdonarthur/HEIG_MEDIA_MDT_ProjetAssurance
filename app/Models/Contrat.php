@@ -11,10 +11,10 @@ class Contrat extends Model
     public $timestamps = false;
 
     public static $rules = [
-        'type'=>'required|in:"RC","RC + Casco","RC ménage maison","RC ménage appartement"',
-        'dateDebut'=>'required|date',
-        'dateEcheance'=>'required|date',
-        'clientNo'=>'required|integer|min:0',
+        'clientNo' => 'required|integer|min:0',
+        'type' => 'required|in:"RC","RC + Casco","RC ménage maison","RC ménage appartement"',
+        'dateDebut' => 'required|date',
+        'dateEcheance' => 'required|date|after:dateDebut'
     ];
 
     public static function getValidation($inputs)
